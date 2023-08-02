@@ -1,0 +1,32 @@
+
+.container {
+    display: flex;
+    width: 100%; 
+    height: auto;
+    background-color: #05103d;
+   
+  }
+  
+ 
+  .container1 {
+    width: 30%;
+    height:auto;
+    /* background-color: '#03123D'; */
+    background-color: #05103d;
+  }
+  
+
+  .container2 {
+    
+    width: 100%;
+    height: auto;
+    /* background-color: black; */
+    
+  }
+  .pointer{
+    cursor: pointer;
+  }
+  
+.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root{
+    color:white
+  }
