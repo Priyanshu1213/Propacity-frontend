@@ -7,7 +7,7 @@
 }
 .n1 img{
   margin-left: 35px;
-  
+  cursor: pointer;
 width: 10%;
 height: 60px;
 }
@@ -67,7 +67,7 @@ opacity: 0.800000011920929;
 button {
   padding: 12px 24px;
   font-size: 18px;
-  background-color: #ff0195;
+  background-color: #ff0062;
   color: #222;
   border: none;
   border-radius: 5px;
@@ -76,7 +76,7 @@ button {
 }
 
 button:hover {
-  background-color: #f07bc9;
+  background-color: #fc6b8f;
 }
 
 
@@ -231,5 +231,37 @@ button:hover {
   margin-right: 10px;
   margin-top: 5px;
 }
+
+
+
+
+
+
+/* Styles for the container */
+.drawer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Styles for the drawer list */
+.drawer-list {
+  width: 250px; /* Adjust the width as needed */
+  padding: 16px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.drawer-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.drawer-list li {
+  margin-bottom: 8px;
+}
+
 
   

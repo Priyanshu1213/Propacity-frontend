@@ -8,6 +8,7 @@ import PlanetsPage from './PlanetsPage'
 import SpeciesPage from './SpeciesPage'
 import StarshipsPage from './StarshipsPage'
 import VehiclesPage from './VehiclesPage'
+import Navbar from './Navbar'
 
 // import * as React from 'react';
 import Accordion from '@mui/material/Accordion';
@@ -36,9 +37,14 @@ export default function Home() {
 
   const [activeCategory, setActiveCategory] = useState('');
 
+  const handleCallback = (childData) => {
+    setActiveCategory(childData);
+};
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
+    
   };
+  
 
   const renderCategoryPage = () => {
     
@@ -56,6 +62,8 @@ export default function Home() {
         return <StarshipsPage />;
         case 'vehicles':
         return <VehiclesPage />;
+        case 'logo':
+        return <Dashboard/>
       default:
         return <Dashboard/>;
     }
@@ -67,7 +75,15 @@ export default function Home() {
 
 
   return (
+    <>
+    {/* <div className='n1'>
+        <img onClick={() => handleCategoryChange('logo')} alt='logo' src='https://lumiere-a.akamaihd.net/v1/images/sw_logo_stacked_2x-52b4f6d33087_7ef430af.png?region=0,0,586,254'/>
+    </div> */}
+     <Navbar parentCallback={handleCallback} />
+    
     <div className='container'>
+
+      
       <div className='container1'>
         {/* <Accodian/> */}
 
@@ -172,5 +188,6 @@ export default function Home() {
       </div>
        
     </div>
+    </>
   )
 }

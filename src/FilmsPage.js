@@ -17,15 +17,28 @@ const FilmsPage = () => {
     left: false,
     bottom: false,
     right: false,
+    
   });
 
-  const toggleDrawer = (anchor, open) => (event) => {
+  let arr=[];
+
+  // const [data, setData] = useState()
+
+  // const changer=(item)=>{
+  //   setData(item)
+  // }
+  // console.log(data);
+
+  const toggleDrawer = (anchor, open,item) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-
-    setState({ ...state, [anchor]: open });
+    
+    setState({ ...state, [anchor]: open,item });
+    
+    
   };
+  console.log(state)
 
 
   useEffect(() => {
@@ -42,17 +55,34 @@ const FilmsPage = () => {
     fetchFilms();
   }, []);
 
+  
   const list = (anchor) => (
+    
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    ><div>
-      hello
-    </div>
+      // onClick={toggleDrawer(anchor, true)}
+      // onKeyDown={toggleDrawer(anchor, false)}
+      
+    >
+      
+      <div className="drawer-list">
+      <div onClick={toggleDrawer(anchor, false)}> back </div>
+      
+      {/* {state.item} */}
+
+      <ul>
+        
+        {state.item?.map((items, index) => (
+          <li key={index}>{items}</li>
+        ))}
+      </ul>
+      
+      </div>
+      
       
     </Box>)
+  
 
   const toggleView = () => {
     setIsGridView((prev) => !prev);
@@ -68,13 +98,15 @@ const FilmsPage = () => {
         <div className="film-grid">
            
           {films.map((film) => {
+            arr=[film.title,film.release_date,]
             return (
-              <div  className="film-item" key={film.url}>
-                <img onClick={toggleDrawer('right', true)} src={`https://picsum.photos/200/300`} alt={`Film Poster - ${film.title}`} />
+              <div  className="film-item"  key={film.url}>
+                
+                <img onClick={toggleDrawer('right', true,arr)}  src={`https://picsum.photos/200/300`} alt={`Film Poster - ${film.title}`} />
                 <div className="film-details">
                   <div className='f1'>{film.title}</div>
 
-                  <MoreVertIcon    />
+                  <MoreVertIcon  />
                   
                   {/* <p>Release Date: {film.release_date}</p> */}
                 </div>
@@ -102,7 +134,7 @@ const FilmsPage = () => {
 
       
 
-<div>
+<div className="drawer-container">
       {['left', 'right', 'top', 'bottom'].map((anchor) => (
         <React.Fragment key={anchor}>
                     
@@ -110,7 +142,8 @@ const FilmsPage = () => {
           <Drawer
             anchor={anchor}
             open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
+            onClose={toggleDrawer(anchor, false )}
+           
           >
             {list(anchor)}
           </Drawer>
